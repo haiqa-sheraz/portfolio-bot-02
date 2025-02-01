@@ -2,6 +2,8 @@ from fastapi import FastAPI, Request
 import requests
 import json
 import os
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 # Ensure the API key is taken from the environment variable
 API_KEY = os.getenv("HF_API_KEY")  # Reads from environment variable
@@ -19,6 +21,19 @@ HEADERS = {
 }
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",  # Add the URL of your frontend (e.g., Next.js app)
+      # Alternatively, add your deployed frontend domain
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows the listed domains
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.post("/chat")
 async def chat(request: Request):
