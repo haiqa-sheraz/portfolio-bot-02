@@ -4,6 +4,10 @@ import json
 import os
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv  # Import dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Ensure the API key is taken from the environment variable
 API_KEY = os.getenv("HF_API_KEY")  # Reads from environment variable
