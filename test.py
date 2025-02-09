@@ -1,11 +1,11 @@
 import requests
 import json
 
-url = "https://portfolio-bot-6kls.onrender.com/chat"  # Replace with your actual URL
+url = "http://127.0.0.1:8000/chat"  # Replace with your actual URL
 
 # Define the payload with the question
 data = {
-    "question": "Tell me about her project Skintelligent"
+    "question": "tell me about nft marketplace"
 }
 
 # Send the POST request
