@@ -28,7 +28,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",
-    "https://haiqa-sherazai.vercel.app/"# Add the URL of your frontend (e.g., Next.js app)
+    "https://haiqa-sherazai.vercel.app"# Add the URL of your frontend (e.g., Next.js app)
       # Alternatively, add your deployed frontend domain
 ]
 
