@@ -1,11 +1,11 @@
 import requests
 import json
 
-url = "http://127.0.0.1:8000/chat"  # Replace with your actual URL
+url = "https://portfolio-bot-02-production.up.railway.app/chat"  # Replace with your actual URL
 
 # Define the payload with the question
 data = {
-    "question": "tell me about nft marketplace"
+    "question": "tell me about her experience"
 }
 
 # Send the POST request

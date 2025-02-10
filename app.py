@@ -27,17 +27,30 @@ HEADERS = {
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",  # Add the URL of your frontend (e.g., Next.js app)
+    "http://localhost:3000",
+    "https://haiqa-sherazai.vercel.app/"# Add the URL of your frontend (e.g., Next.js app)
       # Alternatively, add your deployed frontend domain
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allows the listed domains
+    allow_origins=origins,  # Allows localhost & Vercel
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_methods=["*"],  # Allows all methods (GET, POST, OPTIONS)
     allow_headers=["*"],  # Allows all headers
 )
+
+@app.options("/chat")
+async def preflight():
+    return JSONResponse(
+        status_code=200,
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        }
+    )
+
 
 @app.post("/chat")
 async def chat(request: Request):
